@@ -1,0 +1,35 @@
+{
+  "info": { "name": "MiniFood API", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json" },
+  "variable": [{ "key": "gateway", "value": "http://localhost:8080/api" }],
+  "item": [
+    {
+      "name": "User Service",
+      "item": [
+        { "name": "Register", "request": { "method": "POST", "url": "{{gateway}}/users/register", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"username\": \"testuser\", \"password\": \"123456\"}" } } },
+        { "name": "Login", "request": { "method": "POST", "url": "{{gateway}}/users/login", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"username\": \"testuser\", \"password\": \"123456\"}" } } },
+        { "name": "Get Users", "request": { "method": "GET", "url": "{{gateway}}/users/users" } }
+      ]
+    },
+    {
+      "name": "Food Service",
+      "item": [
+        { "name": "Get Foods", "request": { "method": "GET", "url": "{{gateway}}/foods" } },
+        { "name": "Create Food", "request": { "method": "POST", "url": "{{gateway}}/foods", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"name\": \"Bún Riêu\", \"price\": 42000, \"description\": \"Bún riêu cua đồng\", \"category\": \"main\"}" } } }
+      ]
+    },
+    {
+      "name": "Order Service",
+      "item": [
+        { "name": "Create Order", "request": { "method": "POST", "url": "{{gateway}}/orders", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"userId\": 1, \"items\": [{\"foodId\": 1, \"quantity\": 2}, {\"foodId\": 3, \"quantity\": 1}]}" } } },
+        { "name": "Get Orders", "request": { "method": "GET", "url": "{{gateway}}/orders?userId=1" } }
+      ]
+    },
+    {
+      "name": "Payment Service",
+      "item": [
+        { "name": "Pay Order", "request": { "method": "POST", "url": "{{gateway}}/payments", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"orderId\": 1, \"userId\": 1, \"method\": \"cash\"}" } } },
+        { "name": "Get Notifications", "request": { "method": "GET", "url": "{{gateway}}/notifications?userId=1" } }
+      ]
+    }
+  ]
+}
